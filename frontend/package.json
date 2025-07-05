@@ -22,6 +22,7 @@
     "prepare": "husky"
   },
   "dependencies": {
+    "antd-mobile": "^5.40.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0"
   },
@@ -32,6 +33,7 @@
     ]
   },
   "devDependencies": {
+    "@tailwindcss/vite": "^4.1.11",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.3.0",
     "@types/node": "^24.0.10",
@@ -41,7 +43,6 @@
     "@typescript-eslint/parser": "^8.35.1",
     "@vitejs/plugin-react-swc": "^3.10.2",
     "@vitest/ui": "^3.2.4",
-    "autoprefixer": "^10.4.21",
     "eslint": "^8.57.1",
     "eslint-config-prettier": "^10.1.5",
     "eslint-plugin-prettier": "^5.5.1",
@@ -50,9 +51,8 @@
     "happy-dom": "^18.0.1",
     "husky": "^9.1.7",
     "lint-staged": "^16.1.2",
-    "postcss": "^8.5.6",
     "prettier": "3.6.2",
-    "tailwindcss": "^3.4.17",
+    "tailwindcss": "^4.1.11",
     "typescript": "^5.8.3",
     "vite": "^7.0.2",
     "vite-tsconfig-paths": "^5.1.4",

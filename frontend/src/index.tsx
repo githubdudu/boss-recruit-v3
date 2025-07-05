@@ -1,5 +1,4 @@
 import { createRoot } from 'react-dom/client'
-import 'tailwindcss/tailwind.css'
 import App from 'components/App'
 import { unstableSetRender } from 'antd-mobile' // Support since version ^5.40.0
 
