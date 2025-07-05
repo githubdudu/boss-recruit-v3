@@ -1,6 +1,29 @@
 import { createRoot } from 'react-dom/client'
 import 'tailwindcss/tailwind.css'
 import App from 'components/App'
+import { unstableSetRender } from 'antd-mobile' // Support since version ^5.40.0
+
+// Add type declaration for _reactRoot
+declare global {
+  interface Element {
+    _reactRoot?: ReturnType<typeof createRoot>
+  }
+
+  interface DocumentFragment {
+    _reactRoot?: ReturnType<typeof createRoot>
+  }
+}
+
+// antd-mobile v5 compatibility with React 19
+unstableSetRender((node, container) => {
+  container._reactRoot ||= createRoot(container)
+  const root = container._reactRoot
+  root.render(node)
+  return async () => {
+    await new Promise((resolve) => setTimeout(resolve, 0))
+    root.unmount()
+  }
+})
 
 const container = document.getElementById('root') as HTMLDivElement
 const root = createRoot(container)
