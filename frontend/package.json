@@ -26,7 +26,8 @@
     "antd-mobile": "^5.40.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
-    "react-redux": "^9.2.0"
+    "react-redux": "^9.2.0",
+    "react-router-dom": "^7.6.3"
   },
   "lint-staged": {
     "src/**/*.{js,jsx,ts,tsx}": [
