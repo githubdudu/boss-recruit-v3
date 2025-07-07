@@ -4,6 +4,7 @@ import About from 'pages/About';
 import NotFound from 'pages/NotFound';
 import Login from 'pages/Login';
 import Register from 'pages/Register';
+import LogoLayout from 'layouts/LogoLayout';
 
 function App() {
   return (
@@ -11,9 +12,11 @@ function App() {
       <Routes>
         <Route path="/" element={<Navigate to="/home" />} />
         <Route path="/home" element={<Home />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/about" element={<About />} />
+        <Route element={<LogoLayout />}>
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/about" element={<About />} />
+        </Route>
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
