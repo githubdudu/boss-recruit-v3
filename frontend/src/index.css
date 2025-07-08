@@ -6,6 +6,11 @@
   --brand-accent: #f97316; /* Vibrant Orange */
 }
 
+/* Setting for Antd */
+:root:root {
+  --adm-color-primary: #047857;
+}
+
 * {
   font-family:
     system-ui,
@@ -25,4 +30,9 @@
   --color-brand-primary: var(--brand-primary); /* Professional Green */
   --color-brand-secondary: var(--brand-secondary); /* Secondary Color lighter green */
   --color-brand-accent: var(--brand-accent); /* Vibrant Orange */
+}
+
+/* hack css collision between antd and tailwind */
+.antd-mobile-icon {
+  display: unset;
 }

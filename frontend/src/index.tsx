@@ -1,8 +1,14 @@
 import { createRoot } from 'react-dom/client';
 import App from 'components/App';
-import { unstableSetRender } from 'antd-mobile'; // Support since version ^5.40.0
+import { unstableSetRender, setDefaultConfig } from 'antd-mobile'; // Support since version ^5.40.0
 import { store } from './app/store';
 import { Provider } from 'react-redux';
+import enUS from 'antd-mobile/es/locales/en-US';
+
+// The default one is 'zh-CN'
+setDefaultConfig({
+  locale: enUS
+});
 
 // Add type declaration for _reactRoot
 declare global {

@@ -9,10 +9,12 @@ function LogoLayout() {
     </div>
   );
   return (
-    <div>
+    <div className="h-screen flex flex-col bg-gray-100">
       <NavBar back={null} right={right}></NavBar>
       <Logo />
-      <Outlet />
+      <div className="flex flex-col h-full justify-end-safe">
+        <Outlet />
+      </div>
     </div>
   );
 }
