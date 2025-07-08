@@ -4,8 +4,8 @@ import { useNavigate } from 'react-router-dom';
 function Login() {
   const navigator = useNavigate();
   return (
-    <div className="bg-gray-100 border-2 border-brand-primary rounded-lg">
-      <Form mode="card" className="">
+    <div className="rounded-lg border-2 border-brand-primary bg-gray-100">
+      <Form mode="card">
         <Form.Header>Please login</Form.Header>
         <Form.Item
           name="username"
