@@ -1,16 +1,18 @@
 import { createRoot } from 'react-dom/client';
 import App from 'components/App';
 import { unstableSetRender, setDefaultConfig } from 'antd-mobile'; // Support since version ^5.40.0
-import { store } from './app/store';
 import { Provider } from 'react-redux';
+import { PersistGate } from 'redux-persist/integration/react';
 import enUS from 'antd-mobile/es/locales/en-US';
 
-// The default one is 'zh-CN'
+import { store, persistor } from 'app/store';
+
+// The default setting of antd-mobile is 'zh-CN'
 setDefaultConfig({
   locale: enUS
 });
 
-// Add type declaration for _reactRoot
+// antd-mobile v5 compatibility. Add type declaration for _reactRoot
 declare global {
   interface Element {
     _reactRoot?: ReturnType<typeof createRoot>;
@@ -38,7 +40,9 @@ if (container) {
   const root = createRoot(container);
   root.render(
     <Provider store={store}>
-      <App />
+      <PersistGate loading={null} persistor={persistor}>
+        <App />
+      </PersistGate>
     </Provider>
   );
 } else {
