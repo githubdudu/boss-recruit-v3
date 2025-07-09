@@ -15,8 +15,8 @@ const PORT = process.env.PORT ?? 3000;
 const app = express();
 
 // Configure middleware (logging, CORS support, JSON parsing support, static files support)
-app.use(morgan("combined"));
-app.use(cors());
+app.use(morgan("dev"));
+app.use(cors({ origin: ["http://localhost:5173"], credentials: true }));
 app.use(cookieParser());
 app.use(express.json());
 app.use(express.static("public"));
