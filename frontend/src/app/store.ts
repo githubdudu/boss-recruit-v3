@@ -17,6 +17,8 @@ import {
 } from 'redux-persist';
 import sessionStorage from 'redux-persist/lib/storage/session';
 import isLoggedInReducer from 'reducer/isLoggedInSlice';
+import userInfoReducer from 'reducer/userInfoSlice';
+import userListReducer from 'reducer/userListSlice';
 
 // Persist configuration for isLoggedIn slice only
 const isLoggedInPersistConfig: PersistConfig<
@@ -34,7 +36,9 @@ const persistedIsLoggedInReducer = persistReducer(
 
 export const store = configureStore({
   reducer: {
-    isLoggedIn: persistedIsLoggedInReducer
+    isLoggedIn: persistedIsLoggedInReducer,
+    userInfo: userInfoReducer,
+    userList: userListReducer
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

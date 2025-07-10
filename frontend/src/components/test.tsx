@@ -11,12 +11,9 @@ describe('<App />', () => {
         <App />
       </Provider>
     );
-    expect(
-      screen.getByRole('heading', {
-        name: /Welcome/i,
-        level: 1
-      })
-    ).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: /List/i })).toBeInTheDocument();
+    expect(screen.getByText('Messages', { exact: true })).toBeInTheDocument();
+    expect(screen.getByText('Me', { exact: true })).toBeInTheDocument();
 
     expect(container.firstChild).toBeInTheDocument();
   });

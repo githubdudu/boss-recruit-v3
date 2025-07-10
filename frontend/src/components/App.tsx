@@ -4,6 +4,9 @@ import About from 'pages/About';
 import NotFound from 'pages/NotFound';
 import Login from 'pages/Login';
 import Register from 'pages/Register';
+import List from 'pages/List';
+import Message from 'pages/Message';
+import PersonalCenter from 'pages/PersonalCenter';
 import LogoLayout from 'layouts/LogoLayout';
 
 function App() {
@@ -11,7 +14,11 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Navigate to="/home" />} />
-        <Route path="/home" element={<Home />} />
+        <Route path="/home" element={<Home />}>
+          <Route path="list" element={<List />} />
+          <Route path="message" element={<Message />} />
+          <Route path="me" element={<PersonalCenter />} />
+        </Route>
         <Route element={<LogoLayout />}>
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
