@@ -4,7 +4,7 @@ import About from 'pages/About';
 import NotFound from 'pages/NotFound';
 import Login from 'pages/Login';
 import Register from 'pages/Register';
-import List from 'pages/List';
+import List from 'pages/UserList';
 import Message from 'pages/Message';
 import PersonalCenter from 'pages/PersonalCenter';
 import LogoLayout from 'layouts/LogoLayout';
