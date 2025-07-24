@@ -1,6 +1,7 @@
 import { NavBar } from 'antd-mobile';
 import { Outlet } from 'react-router';
 import Logo from 'components/Logo';
+import RootContainer from 'components/RootContainer';
 
 function LogoLayout() {
   const right = (
@@ -9,13 +10,13 @@ function LogoLayout() {
     </div>
   );
   return (
-    <div className="flex h-screen flex-col bg-gray-100 md:mx-auto md:max-w-3xl">
+    <RootContainer>
       <NavBar back={null} right={right}></NavBar>
       <Logo />
       <div className="flex h-full flex-col justify-end-safe">
         <Outlet />
       </div>
-    </div>
+    </RootContainer>
   );
 }
 

@@ -11,13 +11,17 @@ import { setUserList } from 'reducer/userListSlice';
 
 import axiosInstance from 'api/axiosInstance';
 import BottomTabBar, { type TabIcon } from 'components/BottomTabBar';
+import RootContainer from 'components/RootContainer';
 import { RootState } from 'app/store';
+import { capitalizeFirstLetter } from 'utils';
 
 function Home() {
   const navigate = useNavigate();
   const location = useLocation();
   const dispatch = useDispatch();
-  const userType = useSelector((state: RootState) => state.userInfo.userType);
+  const targetUserType = useSelector(
+    (state: RootState) => state.userInfo.targetUserType
+  );
 
   const getUserInfo = useCallback(async () => {
     try {
@@ -25,8 +29,12 @@ function Home() {
         withCredentials: true
       });
       dispatch(setUserInfo(userInfo.data));
+
+      if (!targetUserType) {
+        return;
+      }
       const userList = await axiosInstance.get(
-        `/api/v1/users?userType=${userType}`,
+        `/api/v1/users?usertype=${targetUserType}`,
         {
           withCredentials: true
         }
@@ -35,7 +43,7 @@ function Home() {
     } catch (error) {
       console.error('Failed to fetch user info:', error);
     }
-  }, [dispatch, userType]);
+  }, [dispatch, targetUserType]);
 
   useEffect(() => {
     if (location.pathname === '/home') {
@@ -48,7 +56,7 @@ function Home() {
   const tabs: TabIcon[] = [
     {
       key: '/home/list',
-      title: 'List',
+      title: `${capitalizeFirstLetter(targetUserType)} List`,
       icon: <UserContactOutline />
     },
     {
@@ -63,14 +71,14 @@ function Home() {
     }
   ];
   return (
-    <div className="flex h-screen flex-col">
+    <RootContainer>
       <div className="flex-1">
         <Outlet />
       </div>
       <div className="border-t-2 border-brand-primary">
         <BottomTabBar tabs={tabs} />
       </div>
-    </div>
+    </RootContainer>
   );
 }
 
