@@ -22,6 +22,7 @@ function UserList() {
         className="bg-brand-secondary text-white"
         style={{ borderBottom: '1px solid var(--color-gray-100)' }}
       >
+        {/* Either Recruiter List or Applicant List */}
         <h1>{capitalizeFirstLetter(targetUserType)} List</h1>
       </NavBar>
       <div className="flex-1 overflow-y-auto p-2">

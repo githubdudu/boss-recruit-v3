@@ -3,6 +3,12 @@ import { Outlet } from 'react-router';
 import Logo from 'components/Logo';
 import RootContainer from 'components/RootContainer';
 
+/**
+ * LogoLayout is a layout component that provides a consistent structure
+ * for the application with a logo and a navigation bar.
+ *
+ * It is used for routes: /login, /register, and /about.
+ */
 function LogoLayout() {
   const right = (
     <div>
