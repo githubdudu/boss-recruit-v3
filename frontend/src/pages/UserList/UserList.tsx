@@ -11,6 +11,11 @@ function UserList() {
     (state: RootState) => state.userInfo.targetUserType
   );
   return (
+    // This layout is a mimic of mobile app
+    // the container of these components enabled flex column layout
+    // There is fixed height for footer, and fixed height for header
+    // The height of the content area is calculated.
+    // The content area is scrollable.
     <>
       <NavBar
         backIcon={false}
@@ -19,7 +24,7 @@ function UserList() {
       >
         <h1>{capitalizeFirstLetter(targetUserType)} List</h1>
       </NavBar>
-      <div className="h-[calc(100vh-96px)] overflow-y-auto p-2">
+      <div className="flex-1 overflow-y-auto p-2">
         <Space direction="vertical" block>
           {userList.map((user) => (
             <UserCard key={user._id} user={user} />

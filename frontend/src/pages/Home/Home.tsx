@@ -72,9 +72,7 @@ function Home() {
   ];
   return (
     <RootContainer>
-      <div className="flex-1">
-        <Outlet />
-      </div>
+      <Outlet />
       <div className="border-t-2 border-brand-primary">
         <BottomTabBar tabs={tabs} />
       </div>
