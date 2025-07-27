@@ -1,5 +1,5 @@
-function Message() {
+function Messages() {
   return <h1>Messages</h1>;
 }
 
-export default Message;
+export default Messages;
