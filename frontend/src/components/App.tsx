@@ -5,7 +5,7 @@ import NotFound from 'pages/NotFound';
 import Login from 'pages/Login';
 import Register from 'pages/Register';
 import List from 'pages/UserList';
-import Message from 'pages/Message';
+import Messages from 'pages/Messages';
 import PersonalCenter from 'pages/PersonalCenter';
 import LogoLayout from 'layouts/LogoLayout';
 
@@ -16,7 +16,7 @@ function App() {
         <Route path="/" element={<Navigate to="/home" />} />
         <Route path="/home" element={<Home />}>
           <Route path="list" element={<List />} />
-          <Route path="message" element={<Message />} />
+          <Route path="messages" element={<Messages />} />
           <Route path="me" element={<PersonalCenter />} />
         </Route>
         <Route element={<LogoLayout />}>

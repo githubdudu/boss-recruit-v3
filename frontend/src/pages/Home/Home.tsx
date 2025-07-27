@@ -60,7 +60,7 @@ function Home() {
       icon: <UserContactOutline />
     },
     {
-      key: '/home/message',
+      key: '/home/messages',
       title: 'Messages',
       icon: <MessageOutline />
     },
