@@ -1,15 +1,41 @@
+import { useCallback, useEffect } from 'react';
 import { NavBar, Space } from 'antd-mobile';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 import { RootState } from 'app/store';
 import { capitalizeFirstLetter } from 'utils';
 import UserCard from './UserCard';
+import axiosInstance from 'api/axiosInstance';
+import { setUserList } from 'reducer/userListSlice';
 
 function UserList() {
   const userList = useSelector((state: RootState) => state.userList);
   const targetUserType = useSelector(
     (state: RootState) => state.userInfo.targetUserType
   );
+  const dispatch = useDispatch();
+
+  const getUserList = useCallback(async () => {
+    try {
+      if (!targetUserType) {
+        return;
+      }
+      const userList = await axiosInstance.get(
+        `/api/v1/users?usertype=${targetUserType}`,
+        {
+          withCredentials: true
+        }
+      );
+      dispatch(setUserList(userList.data));
+    } catch (error) {
+      console.error('Failed to fetch user info:', error);
+    }
+  }, [dispatch, targetUserType]);
+
+  useEffect(() => {
+    getUserList();
+  }, [getUserList]);
+
   return (
     // This layout is a mimic of mobile app
     // the container of these components enabled flex column layout

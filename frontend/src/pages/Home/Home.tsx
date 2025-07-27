@@ -8,7 +8,6 @@ import {
 import { useEffect, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setUserInfo } from 'reducer/userInfoSlice';
-import { setUserList } from 'reducer/userListSlice';
 
 import axiosInstance from 'api/axiosInstance';
 import BottomTabBar, { type TabIcon } from 'components/BottomTabBar';
@@ -30,29 +29,20 @@ function Home() {
         withCredentials: true
       });
       dispatch(setUserInfo(userInfo.data));
-
-      if (!targetUserType) {
-        return;
-      }
-      const userList = await axiosInstance.get(
-        `/api/v1/users?usertype=${targetUserType}`,
-        {
-          withCredentials: true
-        }
-      );
-      dispatch(setUserList(userList.data));
     } catch (error) {
       console.error('Failed to fetch user info:', error);
     }
-  }, [dispatch, targetUserType]);
+  }, [dispatch]);
 
   useEffect(() => {
     if (location.pathname === '/home') {
       navigate('/home/list', { replace: true });
-    } else {
-      getUserInfo();
     }
-  }, [location.pathname, navigate, getUserInfo]);
+  }, [location.pathname, navigate]);
+
+  useEffect(() => {
+    getUserInfo();
+  }, [getUserInfo]);
 
   const tabs: TabIcon[] = [
     {
