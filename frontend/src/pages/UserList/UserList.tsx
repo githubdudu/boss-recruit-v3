@@ -1,5 +1,5 @@
 import { useCallback, useEffect } from 'react';
-import { NavBar, Space } from 'antd-mobile';
+import { NavBar, Skeleton, Space } from 'antd-mobile';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { RootState } from 'app/store';
@@ -53,9 +53,20 @@ function UserList() {
       </NavBar>
       <div className="flex-1 overflow-y-auto p-2">
         <Space direction="vertical" block>
-          {userList.map((user) => (
-            <UserCard key={user._id} user={user} />
-          ))}
+          {userList.length > 0
+            ? userList.map((user) => <UserCard key={user._id} user={user} />)
+            : [0, 1, 2, 3, 4].map((index) => (
+                <Skeleton
+                  key={index}
+                  animated
+                  className="w-full"
+                  style={{
+                    height: '10rem',
+                    width: '100%',
+                    borderRadius: '0.5rem'
+                  }}
+                />
+              ))}
         </Space>
       </div>
     </>
