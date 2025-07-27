@@ -19,7 +19,7 @@ const userSchema = mongoose.Schema(
     jobPosition: { type: String },
     description: { type: String },
     company: { type: String },
-    salary: { type: String },
+    salary: { type: Number },
     email: { type: String },
     phone: { type: String },
     address: { type: String },

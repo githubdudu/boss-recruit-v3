@@ -13,20 +13,20 @@ describe("UserModel Tests", () => {
   const userData = {
     userName: "testuser",
     userPassword: "testpassword",
-    userType: "applicant"
+    userType: "applicant",
   };
   const userDataOptionalFields = {
     avatar: "http://example.com/avatar.png",
     jobPosition: "Software Engineer",
     description: "A passionate software engineer",
     company: "Tech Company",
-    salary: "987654321",
+    salary: 987654321,
     email: "testuser@example.com",
     phone: "1234567890",
     address: "123 Test St, Test City",
     skills: ["JavaScript", "Node.js"],
     education: ["Bachelor's in Computer Science"],
-    experience: ["2 years at Tech Company"]
+    experience: ["2 years at Tech Company"],
   };
 
   beforeAll(async () => {
@@ -96,7 +96,6 @@ describe("UserModel Tests", () => {
       await expect(user.save()).rejects.toThrow();
     });
 
-
     // Strict=true schema option ensures that only defined fields in the schema are saved
     it("should create a user with an invalid property filtered out", async () => {
       const invalidUserData = { ...userData, invalidProperty: "invalidValue" };
@@ -127,28 +126,28 @@ describe("UserModel Tests", () => {
     const updatedUserData = {
       userName: "updated_user",
       userPassword: "updatedPassword",
-      userType: "recruiter"
+      userType: "recruiter",
     };
     const updatedUserDataOptionalFields = {
       avatar: "http://example.com/updated_avatar.png",
       jobPosition: "updated Software Engineer",
       description: "An updated passionate software engineer",
       company: "Updated Tech Company",
-      salary: "updated_987654321",
+      salary: 987654321,
       email: "updated_testuser@example.com",
       phone: "0987654321",
       address: "456 Updated St, Updated City",
       skills: ["updated JavaScript", "updated Node.js"],
       education: ["updated Bachelor's in Computer Science"],
-      experience: ["3 years at Updated Tech Company"]
+      experience: ["3 years at Updated Tech Company"],
     };
-    
+
     beforeEach(async () => {
       // Create a user before each test
       user = new UserModel({ ...userData, ...userDataOptionalFields });
       await user.save();
     });
-    
+
     afterEach(async () => {
       // Clear the User collection after each test
       await UserModel.deleteMany({});
@@ -172,7 +171,7 @@ describe("UserModel Tests", () => {
       });
     });
   });
-  
+
   describe("timestamps", () => {
     let user;
     beforeEach(async () => {
@@ -183,7 +182,7 @@ describe("UserModel Tests", () => {
       // Clear the User collection after each test
       await UserModel.deleteMany({});
     });
-    
+
     it("should have createdAt field and updatedAt field", async () => {
       expect(user.createdAt).toBeDefined();
       expect(user.createdAt).toBeInstanceOf(Date);
