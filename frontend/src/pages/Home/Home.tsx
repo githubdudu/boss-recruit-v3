@@ -1,4 +1,5 @@
 import { Outlet, useNavigate, useLocation } from 'react-router-dom';
+import { SpinLoading } from 'antd-mobile';
 import {
   UserContactOutline,
   MessageOutline,
@@ -72,10 +73,21 @@ function Home() {
   ];
   return (
     <RootContainer>
-      <Outlet />
-      <div className="border-t-2 border-brand-primary">
-        <BottomTabBar tabs={tabs} />
-      </div>
+      {targetUserType ? (
+        <>
+          <Outlet />
+          <div className="border-t-2 border-brand-primary">
+            <BottomTabBar tabs={tabs} />
+          </div>
+        </>
+      ) : (
+        <div
+          className="flex flex-1 items-center justify-center"
+          data-testid="spin-loading"
+        >
+          <SpinLoading style={{ '--size': '4rem' }} color="primary" />
+        </div>
+      )}
     </RootContainer>
   );
 }
