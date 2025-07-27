@@ -9,7 +9,7 @@ export interface UserInfo {
   jobPosition?: string;
   description?: string;
   company?: string;
-  salary?: string;
+  salary?: number;
   email?: string;
   phone?: string;
   address?: string;
