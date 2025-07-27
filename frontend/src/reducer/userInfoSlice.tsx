@@ -12,6 +12,7 @@ export interface UserInfo {
   salary?: string;
   email?: string;
   phone?: string;
+  address?: string;
   skills?: string[];
   education?: string[];
   experience?: string[];

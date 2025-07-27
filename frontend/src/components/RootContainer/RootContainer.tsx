@@ -9,7 +9,7 @@ interface RootContainerProps {
  * for the application. It sets the height to fill the screen and applies
  * a background color.
  *
- * It sets layout for two screen sizes: 48rem/768px and rest.
+ * It sets layout for screen sizes: 20rem/320px, 48rem/768px and rest.
  *
  * It is used in Home and LogoLayout components.
  */

@@ -27,6 +27,8 @@
 }
 
 @theme {
+  --breakpoint-xs: 20rem;
+
   --color-brand-primary: var(--brand-primary); /* Professional Green */
   --color-brand-secondary: var(--brand-secondary); /* Secondary Color lighter green */
   --color-brand-accent: var(--brand-accent); /* Vibrant Orange */
