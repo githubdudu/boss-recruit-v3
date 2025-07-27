@@ -36,7 +36,13 @@ function UserCard({ user }: { user: UserInfo }) {
             {user.salary && (
               <div className="flex flex-col items-start gap-2 xs:flex-row">
                 <span className="text-sm text-gray-600">Salary:</span>
-                <span className="text-sm font-medium">{user.salary}</span>
+                <span className="text-sm font-medium">
+                  {new Intl.NumberFormat('en-NZ', {
+                    style: 'currency',
+                    currency: 'NZD',
+                    maximumFractionDigits: 0
+                  }).format(user.salary)}
+                </span>
               </div>
             )}
             {user.address && (
