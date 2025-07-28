@@ -1,4 +1,4 @@
-import { useCallback, useEffect } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { NavBar, Skeleton, Space } from 'antd-mobile';
 import { useSelector, useDispatch } from 'react-redux';
 
@@ -7,8 +7,10 @@ import { capitalizeFirstLetter } from 'utils';
 import UserCard from './UserCard';
 import axiosInstance from 'api/axiosInstance';
 import { setUserList } from 'reducer/userListSlice';
+import useTimeout from 'hooks/useTimeout';
 
 function UserList() {
+  const [isAnimationDone, setIsAnimationDone] = useState(false);
   const userList = useSelector((state: RootState) => state.userList);
   const targetUserType = useSelector(
     (state: RootState) => state.userInfo.targetUserType
@@ -36,6 +38,10 @@ function UserList() {
     getUserList();
   }, [getUserList]);
 
+  useTimeout(() => {
+    setIsAnimationDone(true);
+  }, 500);
+
   return (
     // This layout is a mimic of mobile app
     // the container of these components enabled flex column layout
@@ -53,7 +59,7 @@ function UserList() {
       </NavBar>
       <div className="flex-1 overflow-y-auto p-2">
         <Space direction="vertical" block>
-          {userList.length > 0
+          {userList.length > 0 && isAnimationDone
             ? userList.map((user) => <UserCard key={user._id} user={user} />)
             : [0, 1, 2, 3, 4].map((index) => (
                 <Skeleton
