@@ -1,0 +1,67 @@
+{
+  "name": "bossrecruitv2-client",
+  "description": "",
+  "version": "2.0.0",
+  "private": true,
+  "type": "module",
+  "author": {
+    "name": "Dewey Dong",
+    "url": "https://github.com/githubdudu"
+  },
+  "bugs": {
+    "url": "https://github.com/githubdudu/bossrecruitv2-client/issues"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "serve": "vite preview",
+    "test": "vitest",
+    "test:ui": "vitest --ui",
+    "lint": "eslint src --max-warnings=0",
+    "typecheck": "tsc --project tsconfig.json --noEmit",
+    "prepare": "husky"
+  },
+  "dependencies": {
+    "@reduxjs/toolkit": "^2.8.2",
+    "antd-mobile": "^5.40.0",
+    "axios": "^1.10.0",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "react-redux": "^9.2.0",
+    "react-router-dom": "^7.6.3",
+    "redux-persist": "^6.0.0"
+  },
+  "lint-staged": {
+    "src/**/*.{js,jsx,ts,tsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ]
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.1.11",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.3.0",
+    "@types/node": "^24.0.10",
+    "@types/react": "^19.1.8",
+    "@types/react-dom": "^19.1.6",
+    "@typescript-eslint/eslint-plugin": "^8.35.1",
+    "@typescript-eslint/parser": "^8.35.1",
+    "@vitejs/plugin-react-swc": "^3.10.2",
+    "@vitest/ui": "^3.2.4",
+    "eslint": "^8.57.1",
+    "eslint-config-prettier": "^10.1.5",
+    "eslint-plugin-prettier": "^5.5.1",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "happy-dom": "^18.0.1",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.1.2",
+    "prettier": "3.6.2",
+    "prettier-plugin-tailwindcss": "^0.6.13",
+    "tailwindcss": "^4.1.11",
+    "typescript": "^5.8.3",
+    "vite": "^7.0.2",
+    "vite-tsconfig-paths": "^5.1.4",
+    "vitest": "^3.2.4"
+  }
+}
