@@ -1,0 +1,103 @@
+@base-url = http://localhost:3000
+@version = v1
+
+@conversationId = null
+
+### GET Hello World
+GET {{base-url}}/
+
+### Login User - Failure (Incorrect Credentials)
+POST {{base-url}}/api/{{version}}/auth/login
+Content-Type: application/json
+
+{
+  "userName": "johndoe",
+  "userPassword": "password123"
+}
+
+### Login User - Success (Recruiter)
+# @name login
+POST {{base-url}}/api/{{version}}/auth/login
+Content-Type: application/json
+
+{
+  "userName": "recruiter1",
+  "userPassword": "password1"
+}
+
+### Logout User by cookie
+POST {{base-url}}/api/{{version}}/auth/logout
+
+
+### GET Users
+GET {{base-url}}/api/{{version}}/users
+
+### GET Users by type recruiter
+GET {{base-url}}/api/{{version}}/users?usertype=recruiter
+
+### GET Users by type applicant
+GET {{base-url}}/api/{{version}}/users?usertype=applicant
+
+### POST User
+POST {{base-url}}/api/{{version}}/users
+Content-Type: application/json
+
+{
+  "userName": "johndoe",
+  "userPassword": "password123",
+  "userType": "recruiter"
+}
+
+### POST User
+# @name createUser
+POST {{base-url}}/api/{{version}}/users
+Content-Type: application/json
+
+{
+  "userName": "johndoe2",
+  "userPassword": "password123",
+  "userType": "recruiter",
+  "avatar": "https://example.com/avatar.jpg",
+  "jobPosition": "Software Engineer",
+  "description": "Experienced software engineer with a passion for building scalable applications.",
+  "company": "Tech Corp",
+  "salary": 60000,
+  "email": "johndoe@example.com",
+  "phone": "1234567890",
+  "address": "123 Main St, City, Country",
+  "skills": ["JavaScript", "Node.js", "React"],
+  "education": ["Tech University - BSc Computer Science"],
+  "experience": ["Tech Corp - Software Engineer (2020-2023)"]
+}
+
+### GET User own account by cookie
+GET {{base-url}}/api/{{version}}/users/me
+
+
+### PATCH User's own account
+PATCH {{base-url}}/api/{{version}}/users/me
+Content-Type: application/json
+
+{
+  "email": "jane.doe@example.com"
+}
+
+### DELETE User's own account
+DELETE {{base-url}}/api/{{version}}/users/me
+
+
+### GET User's conversations
+#@conversations
+GET {{base-url}}/api/{{version}}/users/me/conversations
+
+{{
+  response = JSON.parse(response.body);
+  $global.conversationId = response[0]._id;
+}}
+
+### GET User's messages by conversation ID
+GET {{base-url}}/api/{{version}}/users/me/messages/{{$global.conversationId}}
+
+
+### PATCH User's message by conversation ID
+PATCH {{base-url}}/api/{{version}}/users/me/messages/{{$global.conversationId}}
