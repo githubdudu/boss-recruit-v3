@@ -1,0 +1,17 @@
+# Use Node image for development
+FROM node:22-alpine
+
+# Set working directory
+WORKDIR /app
+
+# Copy package files
+COPY package*.json ./
+
+# Install dependencies
+RUN npm ci
+
+# Expose Express port
+EXPOSE 8000
+
+# Start development server (node --watch, no nodemon needed on Node 22)
+CMD ["npm", "run", "dev"]
