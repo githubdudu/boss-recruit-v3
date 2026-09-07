@@ -1,0 +1,2 @@
+cd frontend && npx lint-staged && npm test -- --run
+cd ../backend && npx lint-staged && npm test -- --run

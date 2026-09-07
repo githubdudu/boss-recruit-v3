@@ -11,8 +11,7 @@
     "test:file": "vitest run",
     "test:coverage": "vitest run --coverage",
     "format": "prettier --write src",
-    "init_db": "node src/db/init_db.js",
-    "prepare": "husky"
+    "init_db": "node src/db/init_db.js"
   },
   "imports": {
     "#/*": "./src/*",
