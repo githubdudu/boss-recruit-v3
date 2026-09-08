@@ -4,7 +4,7 @@ services:
       context: ./frontend
       dockerfile: Dockerfile.dev
     ports:
-      - "80:3000"
+      - "5173:5173"
     volumes:
       - ./frontend:/app
       - /app/node_modules
@@ -18,10 +18,29 @@ services:
     volumes:
       - ./backend:/app
       - /app/node_modules
+    ports:
+      - "3000:3000"
     environment:
       - NODE_ENV=development
-      - PORT=8000
+      - PORT=3000
       - MONGO_URL=mongodb://db:27017/bossrecruit
+    depends_on:
+      db:
+        condition: service_healthy
+    networks: [app_net]
+  # One-shot seeder: docker compose --profile seed run --rm seed
+  # Not in the default profile because init_db.js wipes the collections first.
+  seed:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.dev
+    profiles: ["seed"]
+    volumes:
+      - ./backend:/app
+      - /app/node_modules
+    environment:
+      - MONGO_URL=mongodb://db:27017/bossrecruit
+    command: npm run init_db
     depends_on:
       db:
         condition: service_healthy

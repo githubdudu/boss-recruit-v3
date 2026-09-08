@@ -11,7 +11,7 @@ COPY package*.json ./
 RUN npm ci
 
 # Expose Express port
-EXPOSE 8000
+EXPOSE 3000
 
 # Start development server (node --watch, no nodemon needed on Node 22)
 CMD ["npm", "run", "dev"]

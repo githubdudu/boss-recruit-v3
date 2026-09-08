@@ -4,24 +4,13 @@ dotenv.config();
 
 // Connect to database function
 export async function connectToDatabase() {
-  // MongoDB connection URI
-  const uri = `mongodb+srv://${process.env.db_username}:${process.env.db_password}@${process.env.clusterName}.mongodb.net/${process.env.db_name}?retryWrites=true&w=majority&appName=Cluster0`;
+  // MongoDB connection URI (set by docker compose)
+  const uri = process.env.MONGO_URL;
+  if (!uri) throw new Error("MONGO_URL is not set");
 
-  /*
-   * Mongoose connection options
-   * Ref: https://github.com/Automattic/mongoose/discussions/12875
-   * Ref: https://www.mongodb.com/developer/languages/javascript/mongoose-versus-nodejs-driver/
-   */
-  const options = {
-    serverApi: {
-      version: "1",
-      strict: false,
-      deprecationErrors: true,
-    },
-  };
   try {
     setupConnectionMonitoring();
-    await mongoose.connect(uri, options);
+    await mongoose.connect(uri);
 
     return mongoose.connection;
   } catch (error) {
