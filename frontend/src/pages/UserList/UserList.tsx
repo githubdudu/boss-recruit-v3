@@ -11,6 +11,7 @@ import useTimeout from 'hooks/useTimeout';
 
 function UserList() {
   const [isAnimationDone, setIsAnimationDone] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const userList = useSelector((state: RootState) => state.userList);
   const targetUserType = useSelector(
     (state: RootState) => state.userInfo.targetUserType
@@ -51,13 +52,20 @@ function UserList() {
     <>
       <NavBar
         backIcon={false}
-        className="bg-brand-secondary text-white"
-        style={{ borderBottom: '1px solid var(--color-gray-100)' }}
+        // relative z-10: .adm-nav-bar has no stacking context of its own, so the
+        // shadow would be painted over by the scroll container below it.
+        // rounded-b-lg: 8px. Align with Card
+        className={`font-semibold relative z-10 transition-shadow rounded-b-lg duration-200 ${
+          isScrolled ? 'shadow-md' : 'shadow-none'
+        }`}
       >
         {/* Either Recruiter List or Applicant List */}
         <h1>{capitalizeFirstLetter(targetUserType)} List</h1>
       </NavBar>
-      <div className="flex-1 overflow-y-auto p-2">
+      <div
+        className="flex-1 overflow-y-auto p-2 scrollbar-thin scrollbar-thumb-gray-300"
+        onScroll={(e) => setIsScrolled(e.currentTarget.scrollTop > 0)}
+      >
         <Space direction="vertical" block>
           {userList.length > 0 && isAnimationDone
             ? userList.map((user) => <UserCard key={user._id} user={user} />)
