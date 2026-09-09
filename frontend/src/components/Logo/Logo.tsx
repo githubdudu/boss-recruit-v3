@@ -4,7 +4,7 @@ function Logo() {
       <img
         src="/logo.svg"
         alt="Boss Recruit App Logo"
-        className="w-56 h-56 mx-auto"
+        className="mx-auto h-56 w-56"
       />
       <h1 className="text-3xl font-bold text-gray-800">Boss Recruit</h1>
     </div>
