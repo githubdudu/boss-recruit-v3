@@ -61,23 +61,24 @@ function Home() {
       icon: <UserOutline />
     }
   ];
+
+  if (!targetUserType) {
+    return (
+      <div
+        className="flex flex-1 items-center justify-center"
+        data-testid="spin-loading"
+      >
+        <SpinLoading style={{ '--size': '4rem' }} color="primary" />
+      </div>
+    );
+  }
+
   return (
     <RootContainer>
-      {targetUserType ? (
-        <>
-          <Outlet />
-          <div className="border-t-2 border-brand-primary">
-            <BottomTabBar tabs={tabs} />
-          </div>
-        </>
-      ) : (
-        <div
-          className="flex flex-1 items-center justify-center"
-          data-testid="spin-loading"
-        >
-          <SpinLoading style={{ '--size': '4rem' }} color="primary" />
-        </div>
-      )}
+      <Outlet />
+      <div className="border-t-2 border-brand-primary">
+        <BottomTabBar tabs={tabs} />
+      </div>
     </RootContainer>
   );
 }
