@@ -26,9 +26,11 @@ function LogoLayout() {
           '--border-bottom': '1px solid var(--color-gray-300)'
         }}
       ></NavBar>
-      <Logo />
-      <div className="flex h-full flex-col justify-end-safe">
-        <Outlet />
+      <div className="flex flex-1 scrollbar-thin scrollbar-thumb-gray-300 flex-col overflow-y-auto">
+        <Logo />
+        <div className="flex flex-1 flex-col justify-end-safe">
+          <Outlet />
+        </div>
       </div>
     </RootContainer>
   );
