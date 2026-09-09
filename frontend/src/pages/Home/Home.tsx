@@ -3,6 +3,7 @@ import { NavBar, SpinLoading } from 'antd-mobile';
 import {
   UserContactOutline,
   MessageOutline,
+  MessageFill,
   UserOutline
 } from 'antd-mobile-icons';
 import { useEffect, useCallback, useState } from 'react';
@@ -11,6 +12,8 @@ import { setUserInfo } from 'reducer/userInfoSlice';
 
 import axiosInstance from 'api/axiosInstance';
 import BottomTabBar, { type TabIcon } from 'components/BottomTabBar';
+import UserContactFill from 'components/icons/UserContactFill';
+import UserFill from 'components/icons/UserFill';
 import RootContainer from 'components/RootContainer';
 import { RootState } from 'app/store';
 import { capitalizeFirstLetter } from 'utils';
@@ -49,17 +52,18 @@ function Home() {
     {
       key: '/home/list',
       title: `${capitalizeFirstLetter(targetUserType)} List`,
-      icon: <UserContactOutline />
+      icon: (active: boolean) =>
+        active ? <UserContactFill /> : <UserContactOutline />
     },
     {
       key: '/home/messages',
       title: 'Messages',
-      icon: <MessageOutline />
+      icon: (active: boolean) => (active ? <MessageFill /> : <MessageOutline />)
     },
     {
       key: '/home/me',
       title: 'Me',
-      icon: <UserOutline />
+      icon: (active: boolean) => (active ? <UserFill /> : <UserOutline />)
     }
   ];
 

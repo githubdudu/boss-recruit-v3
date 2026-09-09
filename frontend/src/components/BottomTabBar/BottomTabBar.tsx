@@ -5,7 +5,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 export interface TabIcon {
   key: string;
   title: string;
-  icon: React.ReactNode;
+  icon: React.ReactNode | ((active: boolean) => React.ReactNode);
 }
 
 const BottomTabBar: FC<{ tabs: TabIcon[] }> = ({ tabs }) => {
