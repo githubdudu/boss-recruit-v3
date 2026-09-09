@@ -15,8 +15,10 @@ interface RootContainerProps {
  */
 function RootContainer({ children }: RootContainerProps) {
   return (
-    <div className="mx-auto flex h-screen max-h-211 min-w-xs flex-col overflow-clip bg-gray-100 md:my-auto md:max-w-97.5 md:rounded-2xl md:shadow-xl">
-      {children}
+    <div className="mx-auto flex h-screen flex-col items-stretch justify-center-safe md:items-center">
+      <div className="flex h-full w-full min-w-xs flex-col overflow-clip bg-gray-100 md:max-h-211 md:min-h-180 md:w-97.5 md:rounded-2xl md:ring-8 md:ring-white/10">
+        {children}
+      </div>
     </div>
   );
 }
