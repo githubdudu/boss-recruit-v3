@@ -16,12 +16,24 @@ Whole stack (frontend on <http://localhost>):
 docker compose up --build
 ```
 
+
 Or per package:
 
 ```bash
 cd frontend && npm install && npm run dev   # http://localhost:5173
 cd backend  && npm install && npm run dev
 ```
+## Development
+
+After changing dependencies (`package.json` / `package-lock.json`), add `-V`:
+
+```bash
+docker compose up --build -V
+```
+
+`node_modules` lives in an anonymous volume 
+
+`-V` (`--renew-anon-volumes`) discards that volume and re-initialises it from the new image.
 
 ## Scripts
 
